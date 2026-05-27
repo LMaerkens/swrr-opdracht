@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GebruikerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/registreer', [GebruikerController::class, 'index'])->name('registreer.form');
+Route::post('/registreer', [GebruikerController::class, 'store'])->name('registreer.submit');
