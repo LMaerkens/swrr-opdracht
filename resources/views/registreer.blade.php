@@ -6,8 +6,8 @@
     <title>Registreer</title>
     <link rel="stylesheet" href="/css/app.css">
  </head>
-<body>
-    <main style="padding:2rem;">
+<body>  
+    <main style="padding:2rem;font-size:200px;">
         <h1>Registreer</h1>
         <form method="POST" action="/register">
             @csrf
@@ -23,7 +23,7 @@
                 <label for="password">Wachtwoord</label>
                 <input id="password" name="password" type="password" required>
             </div>
-            <button type="submit">Registreer</button>
+            <button type="submit" style="width:500px;height:500px;font-size:500px;">Registreer</button>
         </form>
     </main>
 </body>
