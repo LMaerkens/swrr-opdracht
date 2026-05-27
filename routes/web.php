@@ -15,7 +15,7 @@ use App\Http\Controllers\GebruikerController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('registreer');
 });
 
 Route::get('/registreer', [GebruikerController::class, 'index'])->name('registreer.form');
