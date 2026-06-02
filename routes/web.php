@@ -1,5 +1,6 @@
 
 <?php
+ use App\Http\Controllers\GebruikerController;
 Route::get('/', function () {
     return view('home');
 });
