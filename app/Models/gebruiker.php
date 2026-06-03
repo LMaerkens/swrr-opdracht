@@ -8,16 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class gebruiker extends Model
 {
     use HasFactory;
-    public $id;
-    public $lidmaatschaps;
-    public $voornaam;
-    public $achternaam;
-    public $email;
-    public $nowin;
-    
+
+    protected $fillable = [
+        'voornaam',
+        'achternaam',
+        'email',
+        'lidmaatschap',
+    ];
+
     public function rol()
     {
         return $this->hasOne(rol::class);
     }
-
 }

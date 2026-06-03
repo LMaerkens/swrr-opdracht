@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="nl">
- 
+
 <head>
 
     <meta charset="UTF-8">
@@ -9,9 +9,7 @@
     <title>SRWW</title>
 
     <!-- Bootstrap -->
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
         .btn {
@@ -25,44 +23,59 @@
 <body style="background-color:#f4f7fb;">
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark"
-        style="background-color:#0d3b66;">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#0d3b66;">
 
         <div class="container">
 
             <!-- Logo -->
-            <img
-                src="/images/logo.png"
-                width="70"
-                class="me-3">
+            <img src="/images/logo.png" width="70" class="me-3">
 
-            <a class="navbar-brand fw-bold" href="/">
+            <a class="navbar-brand fw-bold" href="{{ route('home') }}">
                 Stichting SRWW
             </a>
 
             <!-- Menu -->
             <div>
 
-                <a class="btn btn-outline-light me-2"
-                    href="/huisjes">
-
+                <a class="btn btn-outline-light me-2" href="{{ route('huisjes.index') }}">
                     Huisjes
-
                 </a>
 
-                <a class="btn btn-outline-light me-2"
-                    href="/registreer">
+                @auth
+                    <a class="btn btn-outline-light me-2" href="{{ route('boeking') }}">
+                        Boeken
+                    </a>
 
-                    Inschrijven
+                    <a class="btn btn-warning me-2" href="{{ route('voorwaarden') }}">
+                        Voorwaarden
+                    </a>
 
-                </a>
+                    <span class="text-white me-2">
+                        Welkom, {{ auth()->user()->name }}
+                        @if(auth()->user()->rol === 'admin')
+                            <span class="badge bg-warning text-dark ms-1">Admin</span>
+                        @endif
+                    </span>
 
-                <a class="btn btn-warning"
-                    href="/voorwaarden">
+                    <form method="POST" action="{{ route('logout') }}" class="d-inline">
+                        @csrf
+                        <button type="submit" class="btn btn-outline-danger">
+                            Uitloggen
+                        </button>
+                    </form>
+                @else
+                    <a class="btn btn-outline-light me-2" href="{{ route('registreer.form') }}">
+                        Inschrijven
+                    </a>
 
-                    Voorwaarden
+                    <a class="btn btn-outline-light me-2" href="{{ route('login') }}">
+                        Inloggen
+                    </a>
 
-                </a>
+                    <a class="btn btn-warning" href="{{ route('voorwaarden') }}">
+                        Voorwaarden
+                    </a>
+                @endauth
 
             </div>
 
@@ -73,8 +86,7 @@
     <!-- Hero -->
     <div class="container text-center mt-5">
 
-        <h1 class="display-4 fw-bold mb-4"
-            style="color:#0d3b66;">
+        <h1 class="display-4 fw-bold mb-4" style="color:#0d3b66;">
 
             Welkom bij Stichting SRWW
 
@@ -82,7 +94,7 @@
 
         <p class="lead">
 
-            Stichting Recreatiewoningen Weg & Water verhuurt
+            Stichting Recreatiewoningen Weg &amp; Water verhuurt
             vakantiehuisjes aan leden van de personeelsvereniging.
 
         </p>
@@ -207,8 +219,7 @@
 
         <div class="card border-0 shadow p-5">
 
-            <h2 class="mb-4"
-                style="color:#0d3b66;">
+            <h2 class="mb-4" style="color:#0d3b66;">
 
                 Over Stichting SRWW
 
@@ -237,12 +248,11 @@
     </div>
 
     <!-- Footer -->
-    <footer class="text-white text-center p-4"
-        style="background-color:#0d3b66;">
+    <footer class="text-white text-center p-4" style="background-color:#0d3b66;">
 
         <p class="mb-0">
 
-            © 2026 Stichting SRWW
+            &copy; 2026 Stichting SRWW
 
         </p>
 
