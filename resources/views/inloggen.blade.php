@@ -31,7 +31,7 @@
                 </div>
             @endif
             
-            <form method="POST" action="/login">
+            <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="form-group">
                     <label for="email">E-mailadres</label>
@@ -49,7 +49,7 @@
             </form>
 
             <div class="auth-footer">
-                <p>Nog geen account? <a href="{{ route('register') }}">Registreer</a></p>
+                <p>Nog geen account? <a href="{{ route('registreer.form') }}">Registreer</a></p>
             </div>
         </div>
     </main>

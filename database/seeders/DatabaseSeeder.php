@@ -13,6 +13,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        \App\Models\User::updateOrCreate(
+            ['email' => 'admin@srww.nl'],
+            [
+                'name' => 'Admin User',
+                'password' => \Illuminate\Support\Facades\Hash::make('admin123'),
+                'rol' => 'admin',
+            ]
+        );
+
+        \App\Models\User::updateOrCreate(
+            ['email' => 'user@srww.nl'],
+            [
+                'name' => 'PV Lid',
+                'password' => \Illuminate\Support\Facades\Hash::make('user123'),
+                'rol' => 'user',
+            ]
+        );
     }
 }

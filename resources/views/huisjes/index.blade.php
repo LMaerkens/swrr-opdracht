@@ -127,15 +127,24 @@
 
 {{-- Navigatie --}}
 <nav class="nav">
-    <a href="{{ url('/huisjes') }}" class="nav-brand">🏡 VakantieHuisjes</a>
+    <a href="{{ route('home') }}" class="nav-brand">🏡 Stichting SRWW</a>
     <div class="nav-links">
-        <a href="{{ url('/huisjes') }}">Huisjes</a>
-        <a href="{{ url('/boeking') }}">Boeken</a>
+        <a href="{{ route('home') }}">Home</a>
+        <a href="{{ route('huisjes.index') }}">Huisjes</a>
+        <a href="{{ route('boeking') }}">Boeken</a>
+        <a href="{{ route('voorwaarden') }}">Voorwaarden</a>
         @auth
             @if(auth()->user()->rol === 'admin')
                 <span class="badge-admin">Admin</span>
                 <a href="{{ route('huisjes.create') }}" class="btn btn-green">+ Toevoegen</a>
             @endif
+            <form method="POST" action="{{ route('logout') }}" style="display:inline">
+                @csrf
+                <button type="submit" class="btn btn-green" style="background:#e53e3e;">Uitloggen</button>
+            </form>
+        @else
+            <a href="{{ route('login') }}">Inloggen</a>
+            <a href="{{ route('registreer.form') }}">Registreer</a>
         @endauth
     </div>
 </nav>
