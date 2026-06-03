@@ -47,10 +47,20 @@ Route::get('/test-login-admin', function () {
     $admin = \App\Models\User::where('email', 'admin@test.nl')->first();
     if ($admin) {
         auth()->login($admin);
-        return redirect('/huisjes')->with('succes', '✅ Je bent ingelogd als admin: ' . $admin->name);
+        return redirect('/huisjes')->with('succes', '✅ Ingelogd als admin: ' . $admin->name);
     }
-    return 'Admin niet gevonden. Draai eerst de seeder.';
+    return 'Admin niet gevonden.';
 })->name('test.login.admin');
+
+// Log in als normale gebruiker (voor testen zonder admin-knoppen)
+Route::get('/test-login-user', function () {
+    $user = \App\Models\User::where('email', 'user@test.nl')->first();
+    if ($user) {
+        auth()->login($user);
+        return redirect('/huisjes')->with('succes', '👤 Ingelogd als gebruiker: ' . $user->name);
+    }
+    return 'Gebruiker niet gevonden.';
+})->name('test.login.user');
 
 // Log uit (voor testen)
 Route::get('/test-logout', function () {

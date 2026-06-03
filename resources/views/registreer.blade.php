@@ -9,7 +9,7 @@
 <body>
     <main style="padding:2rem;">
         <h1>Registreer</h1>
-        <form method="POST" action="/register">
+        <form method="POST" action="{{ route('registreer.submit') }}">
             @csrf
             <div>
                 <label for="name">Naam</label>
