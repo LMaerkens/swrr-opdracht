@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -34,7 +36,30 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate input
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:8|confirmed',
+        ], [
+            'name.required' => 'Naam is verplicht',
+            'email.required' => 'E-mail is verplicht',
+            'email.email' => 'Voer een geldig e-mailadres in',
+            'email.unique' => 'Dit e-mailadres is al geregistreerd',
+            'password.required' => 'Wachtwoord is verplicht',
+            'password.min' => 'Wachtwoord moet minstens 8 tekens lang zijn',
+            'password.confirmed' => 'Wachtwoorden komen niet overeen',
+        ]);
+
+        // Hash password and create user
+        $user = User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
+        ]);
+
+        // Redirect with success message
+        return redirect('/')->with('success', 'Registratie succesvol! U kunt nu inloggen.');
     }
 
     /**
