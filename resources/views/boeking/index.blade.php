@@ -39,8 +39,19 @@
 <body>
 
 <nav class="nav">
-    <span class="nav-brand">🏡 VakantieHuisjes</span>
-    <a href="{{ url('/huisjes') }}" class="nav-back">← Terug naar huisjes</a>
+    <a href="{{ route('home') }}" class="nav-brand">🏡 Stichting SRWW</a>
+    <div style="display:flex;align-items:center;gap:.8rem;">
+        <a href="{{ route('home') }}" class="nav-back">Home</a>
+        <a href="{{ route('huisjes.index') }}" class="nav-back">← Terug naar huisjes</a>
+        @auth
+            <form method="POST" action="{{ route('logout') }}" style="display:inline">
+                @csrf
+                <button type="submit" class="nav-back" style="background:rgba(255,255,255,.15);border:none;cursor:pointer;font-family:'Inter',sans-serif;">Uitloggen</button>
+            </form>
+        @else
+            <a href="{{ route('login') }}" class="nav-back">Inloggen</a>
+        @endauth
+    </div>
 </nav>
 
 <div class="center">
@@ -51,7 +62,7 @@
         De boekingspagina wordt nog gebouwd.
         Binnenkort kun je hier eenvoudig een vakantiehuisje reserveren.
     </p>
-    <a href="{{ url('/huisjes') }}" class="btn-back">← Terug naar huisjes</a>
+    <a href="{{ route('huisjes.index') }}" class="btn-back">← Terug naar huisjes</a>
 </div>
 
 </body>
