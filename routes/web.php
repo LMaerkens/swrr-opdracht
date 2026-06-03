@@ -47,3 +47,7 @@ Route::get('/ping', function () {
     return response('ok', 200);
 });
 
+
+Route::get('/registreer', [GebruikerController::class, 'index'])->name('registreer.form');
+
+Route::post('/registreer', [GebruikerController::class, 'store'])->name('registreer.submit');
