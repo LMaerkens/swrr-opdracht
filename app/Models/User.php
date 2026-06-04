@@ -19,9 +19,24 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'voornaam',
+        'achternaam',
+        'lidmaatschap',
         'email',
         'password',
+        'rol',         // 'user' of 'admin'
     ];
+
+    /**
+     * Controleer of deze gebruiker een admin is.
+     * Gebruik: auth()->user()->isAdmin()
+     *
+     * @return bool
+     */
+    public function isAdmin(): bool
+    {
+        return $this->rol === 'admin';
+    }
 
     /**
      * The attributes that should be hidden for serialization.
