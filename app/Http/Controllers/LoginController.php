@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -42,6 +43,20 @@ class LoginController extends Controller
         if (Auth::attempt($credentials, $remember)) {
             // Regenerate session to protect against session fixation
             $request->session()->regenerate();
+
+            // Check if email is verified
+            if (is_null(Auth::user()->email_verified_at)) {
+                $user = Auth::user();
+                // Logout the unverified user
+                Auth::logout();
+
+                // Send verification email
+                $user->sendEmailVerificationNotification();
+
+                return back()->withErrors([
+                    'email' => 'Je e-mail is nog niet geverifieerd. We hebben zojuist een verificatie-e-mail naar je inbox verzonden.',
+                ])->withInput($request->only('email'));
+            }
 
             return redirect()->intended(route('home'))->with('success', 'U bent succesvol ingelogd.');
         }
