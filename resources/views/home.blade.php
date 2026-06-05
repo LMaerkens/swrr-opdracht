@@ -63,7 +63,7 @@
                         </button>
                     </form>
                 @else
-                    <a class="btn btn-outline-light me-2" href="{{ route('registreer.form') }}">
+                    <a class="btn btn-outline-light me-2" href="{{ route('inschrijving') }}">
                         Inschrijven
                     </a>
 

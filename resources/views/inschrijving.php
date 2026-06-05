@@ -28,7 +28,7 @@
         }
 
         .header {
-            background: linear-gradient(135deg, #1E5AA8 0%, #2E7BB8 100%);
+            background: linear-gradient(135deg, #0d3b66 0%, #0d5a8c 100%);
             padding: 40px 20px;
             text-align: center;
             color: white;
@@ -55,7 +55,7 @@
         }
 
         .section-title {
-            background: #1E5AA8;
+            background: #0d3b66;
             color: white;
             padding: 12px 16px;
             font-size: 16px;
@@ -96,8 +96,8 @@
         textarea:focus,
         select:focus {
             outline: none;
-            border-color: #1E5AA8;
-            box-shadow: 0 0 0 3px rgba(30, 90, 168, 0.1);
+            border-color: #0d3b66;
+            box-shadow: 0 0 0 3px rgba(13, 59, 102, 0.1);
         }
 
         textarea {
@@ -175,7 +175,7 @@
         }
 
         .house-option:hover {
-            border-color: #1E5AA8;
+            border-color: #0d3b66;
             background-color: #f8fbff;
         }
 
@@ -208,7 +208,7 @@
         }
 
         .holiday-option:hover {
-            border-color: #1E5AA8;
+            border-color: #0d3b66;
             background-color: #f8fbff;
         }
 
@@ -244,7 +244,7 @@
         }
 
         .terms h3 {
-            color: #1E5AA8;
+            color: #0d3b66;
             margin-bottom: 15px;
             font-size: 15px;
         }
@@ -272,7 +272,7 @@
         }
 
         .tariff-table th {
-            background-color: #1E5AA8;
+            background-color: #0d3b66;
             color: white;
             font-weight: 600;
         }
@@ -301,13 +301,13 @@
         }
 
         .btn-submit {
-            background: linear-gradient(135deg, #1E5AA8 0%, #2E7BB8 100%);
+            background: linear-gradient(135deg, #0d3b66 0%, #0d5a8c 100%);
             color: white;
         }
 
         .btn-submit:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(30, 90, 168, 0.3);
+            box-shadow: 0 8px 16px rgba(13, 59, 102, 0.3);
         }
 
         .btn-reset {

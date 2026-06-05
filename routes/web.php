@@ -30,6 +30,9 @@ Route::post('/register', [UserController::class, 'store']);
 // Huisjes Routes
 Route::resource('huisjes', HuisjeController::class)->except(['show']);
 
+// Inschrijving Page
+Route::view('/inschrijving', 'inschrijving')->name('inschrijving');
+
 // Boeking Page
 Route::view('/boeking', 'boeking.index')->name('boeking');
 
