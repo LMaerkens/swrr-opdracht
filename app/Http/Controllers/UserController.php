@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
 
 class UserController extends Controller
 {
@@ -58,8 +59,10 @@ class UserController extends Controller
             'password' => Hash::make($validated['password']),
         ]);
 
-        // Redirect with success message
-        return redirect('/')->with('success', 'Registratie succesvol! U kunt nu inloggen.');
+        // Send email verification (without logging in yet)
+        event(new Registered($user));
+
+        return redirect('/email/verify-sent')->with('success', 'Registratie succesvol! Controleer je e-mail om je account te verifiëren.');
     }
 
     /**
