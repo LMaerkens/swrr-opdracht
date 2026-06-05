@@ -313,6 +313,16 @@ button {
     background-color: #d0d0d0;
 }
 
+.btn-back {
+    background-color: #ffffff;
+    color: #2c3e50;
+    border: 1px solid #cfd8dc;
+}
+
+.btn-back:hover {
+    background-color: #f6f7f8;
+}
+
 .required {
     color: #e74c3c;
 }

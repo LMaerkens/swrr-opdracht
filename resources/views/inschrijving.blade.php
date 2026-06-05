@@ -290,6 +290,7 @@
 
                 <!-- Buttons -->
                 <div class="form-actions">
+                    <button type="button" class="btn-back" onclick="if (window.history.length > 1) { window.history.back(); } else { window.location.href = '{{ route('home') }}'; }">Terug</button>
                     <button type="reset" class="btn-reset">Wissen</button>
                     <button type="submit" class="btn-submit">Inschrijving Versturen</button>
                 </div>
