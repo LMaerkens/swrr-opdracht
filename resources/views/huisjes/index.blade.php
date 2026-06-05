@@ -131,7 +131,7 @@
     <div class="nav-links">
         <a href="{{ route('home') }}">Home</a>
         <a href="{{ route('huisjes.index') }}">Huisjes</a>
-        <a href="{{ route('boeking') }}">Boeken</a>
+        <a href="{{ route('inschrijving.form') }}">Boeken</a>
         <a href="{{ route('voorwaarden') }}">Voorwaarden</a>
         @auth
             @if(auth()->user()->rol === 'admin')
@@ -246,7 +246,7 @@
 
                 {{-- Boek knop → /boeking --}}
                 <div class="footer">
-                    <a href="{{ url('/boeking') }}" class="btn btn-gold" id="boek-{{ $huisje->id }}">
+                    <a href="{{ route('inschrijving.form') }}" class="btn btn-gold" id="boek-{{ $huisje->id }}">
                         📅 Boek nu
                     </a>
                 </div>

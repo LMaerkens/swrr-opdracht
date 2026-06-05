@@ -42,7 +42,7 @@
                 </a>
 
                 @auth
-                    <a class="btn btn-outline-light me-2" href="{{ route('boeking') }}">
+                    <a class="btn btn-outline-light me-2" href="{{ route('inschrijving.form') }}">
                         Boeken
                     </a>
 
@@ -64,7 +64,7 @@
                         </button>
                     </form>
                 @else
-                    <a class="btn btn-outline-light me-2" href="{{ route('registreer.form') }}">
+                    <a class="btn btn-outline-light me-2" href="{{ route('inschrijving.form') }}">
                         Inschrijven
                     </a>
 

@@ -1,9 +1,10 @@
     <?php
 
-    use Illuminate\Support\Facades\Route;
-    use App\Http\Controllers\UserController;
-    use App\Http\Controllers\LoginController;
-    use App\Http\Controllers\HuisjeController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\HuisjeController;
+use App\Http\Controllers\InschrijvingController;
 
     /*
     |--------------------------------------------------------------------------
@@ -21,11 +22,15 @@
     Route::post('/login', [LoginController::class, 'login']);
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-    // Registration Routes
-    Route::get('/registreer', [UserController::class, 'index'])->name('registreer.form');
-    Route::post('/registreer', [UserController::class, 'store'])->name('registreer.submit');
-    Route::get('/register', [UserController::class, 'index'])->name('register');
-    Route::post('/register', [UserController::class, 'store']);
+// Registration Routes
+Route::get('/registreer', [UserController::class, 'index'])->name('registreer.form');
+Route::post('/registreer', [UserController::class, 'store'])->name('registreer.submit');
+Route::get('/register', [UserController::class, 'index'])->name('register');
+Route::post('/register', [UserController::class, 'store']);
+
+// Inschrijving form (vakantie-inschrijving)
+Route::get('/inschrijving', [InschrijvingController::class, 'create'])->name('inschrijving.form');
+Route::post('/inschrijving', [InschrijvingController::class, 'store'])->name('inschrijving.submit');
 
     // Huisjes Routes
     Route::resource('huisjes', HuisjeController::class)->except(['show']);
