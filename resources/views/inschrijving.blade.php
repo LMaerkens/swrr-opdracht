@@ -4,9 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inschrijving Recreatiewoningen</title>
-    <link rel="stylesheet" href="{{ asset('css/inschrijving.css') }}">
+    <link rel="stylesheet" href="/css/app.css">
 </head>
-<body>
+<body class="page-inschrijving">
+
+<nav class="nav">
+    <a href="{{ route('home') }}" class="nav-brand">Stichting SRWW</a>
+    <div class="nav-links">
+        <a href="{{ route('home') }}">Home</a>
+        <a href="{{ route('huisjes.index') }}">Huisjes</a>
+        <a href="{{ route('voorwaarden') }}">Voorwaarden</a>
+    </div>
+</nav>
     @if(session('success'))
         <div id="notification" class="notification show">
             <h3>✓ Inschrijving Verstuurd!</h3>
@@ -19,8 +28,8 @@
         </div>
     @endif
 
-    <div class="container">
-        <div class="header">
+    <div class="inschrijving-container">
+        <div class="inschrijving-header">
             <h1>Inschrijving Najaar & Kerstvakantie 2026</h1>
             <p>Dit ingevulde formulier mailen aan: <strong>srww@ziggo.nl</strong></p>
         </div>
@@ -30,7 +39,7 @@
                 @csrf
                 <!-- Persoonlijke Gegevens -->
                 <div class="form-section">
-                    <div class="section-title">Persoonlijke Gegevens</div>
+                    <div class="form-section-title">Persoonlijke Gegevens</div>
                     
                     <div class="form-group">
                         <label for="naam">Naam <span class="required">*</span></label>
@@ -89,9 +98,9 @@
 
                 <!-- Vakantieperiode -->
                 <div class="form-section">
-                    <div class="section-title">Vakantieperiode - NAJAAR 1</div>
+                    <div class="form-section-title">Vakantieperiode - NAJAAR 1</div>
                     
-                    <p style="margin-bottom: 15px; font-size: 13px; color: #666;">
+                    <p class="form-hint">
                         Per persoon kan slechts één van de vakantieweken (herfst- óf kerstvakantie) worden toegewezen op basis van volgorde loting!
                     </p>
 
@@ -132,7 +141,7 @@
 
                 <!-- Verblijf Type -->
                 <div class="form-section">
-                    <div class="section-title">Type Verblijf</div>
+                    <div class="form-section-title">Type Verblijf</div>
                     
                     <div class="form-group">
                         <div class="checkbox-group">
@@ -152,14 +161,14 @@
                     </div>
 
                     <div class="form-group">
-                        <label style="font-weight: 600;">1e Keus</label>
+                        <span class="sub-label">1e Keus</span>
                         <div class="date-inputs">
                             <div>
-                                <label style="font-size: 12px;">Van</label>
+                                <label class="field-label-sm">Van</label>
                                 <input type="date" name="keus1_van" value="{{ old('keus1_van') }}">
                             </div>
                             <div>
-                                <label style="font-size: 12px;">Tot</label>
+                                <label class="field-label-sm">Tot</label>
                                 <input type="date" name="keus1_tot" value="{{ old('keus1_tot') }}">
                             </div>
                             <div></div>
@@ -167,14 +176,14 @@
                     </div>
 
                     <div class="form-group">
-                        <label style="font-weight: 600;">2e Keus</label>
+                        <span class="sub-label">2e Keus</span>
                         <div class="date-inputs">
                             <div>
-                                <label style="font-size: 12px;">Van</label>
+                                <label class="field-label-sm">Van</label>
                                 <input type="date" name="keus2_van" value="{{ old('keus2_van') }}">
                             </div>
                             <div>
-                                <label style="font-size: 12px;">Tot</label>
+                                <label class="field-label-sm">Tot</label>
                                 <input type="date" name="keus2_tot" value="{{ old('keus2_tot') }}">
                             </div>
                             <div></div>
@@ -184,7 +193,7 @@
 
                 <!-- Gewenst Zomerhuisje -->
                 <div class="form-section">
-                    <div class="section-title">Gewenst Zomerhuisje</div>
+                    <div class="form-section-title">Gewenst Zomerhuisje</div>
                     
                     <div class="note">
                         Geef uw voorkeur aan met een cijfer (1 = eerste keus, 2 = tweede keus, etc.)
@@ -194,33 +203,33 @@
                         <div class="house-options">
                             <label class="house-option">
                                 <input type="checkbox" name="huisje[]" value="vlieland">
-                                <label style="margin: 0; cursor: pointer;">Vlieland</label>
+                                <span>Vlieland</span>
                             </label>
 
                             <label class="house-option">
                                 <input type="checkbox" name="huisje[]" value="ameland">
-                                <label style="margin: 0; cursor: pointer;">Ameland</label>
+                                <span>Ameland</span>
                             </label>
 
                             <label class="house-option">
                                 <input type="checkbox" name="huisje[]" value="julianadorp">
-                                <label style="margin: 0; cursor: pointer;">Julianadorp aan Zee</label>
+                                <span>Julianadorp aan Zee</span>
                             </label>
                         </div>
                         <div class="house-options">
                             <label class="house-option">
                                 <input type="checkbox" name="huisje[]" value="terschelling">
-                                <label style="margin: 0; cursor: pointer;">Terschelling</label>
+                                <span>Terschelling</span>
                             </label>
 
                             <label class="house-option">
                                 <input type="checkbox" name="huisje[]" value="schiermonnikoog">
-                                <label style="margin: 0; cursor: pointer;">Schiermonnikoog</label>
+                                <span>Schiermonnikoog</span>
                             </label>
 
                             <label class="house-option">
                                 <input type="checkbox" name="huisje[]" value="echten">
-                                <label style="margin: 0; cursor: pointer;">Echten</label>
+                                <span>Echten</span>
                             </label>
                         </div>
                     </div>
@@ -228,7 +237,7 @@
 
                 <!-- Toelichting -->
                 <div class="form-section">
-                    <div class="section-title">Eventuele Toelichting</div>
+                    <div class="form-section-title">Eventuele Toelichting</div>
                     
                     <div class="form-group">
                         <textarea id="toelichting" name="toelichting" placeholder="Voeg hier eventuele opmerkingen toe..."></textarea>
@@ -237,7 +246,7 @@
 
                 <!-- Voorwaarden -->
                 <div class="form-section">
-                    <div class="section-title">Algemene Voorwaarden & Tarieven</div>
+                    <div class="form-section-title">Algemene Voorwaarden &amp; Tarieven</div>
                     
                     <div class="terms">
                         <h3>U gaat akkoord met de volgende voorwaarden:</h3>
@@ -251,7 +260,7 @@
                             <li>Verhuur aan derden is met ingang van 2024 niet meer mogelijk.</li>
                         </ol>
 
-                        <h3 style="margin-top: 20px;">Weektarieven 2026</h3>
+                        <h3 class="terms-subtitle">Weektarieven 2026</h3>
                         <table class="tariff-table">
                             <thead>
                                 <tr>
@@ -283,7 +292,7 @@
                     <div class="form-group">
                         <label class="checkbox-item">
                             <input type="checkbox" name="akkoord" required>
-                            <span style="font-weight: 500;">Ik ga akkoord met bovenstaande voorwaarden en tarieven <span class="required">*</span></span>
+                            <span>Ik ga akkoord met bovenstaande voorwaarden en tarieven <span class="required">*</span></span>
                         </label>
                     </div>
                 </div>

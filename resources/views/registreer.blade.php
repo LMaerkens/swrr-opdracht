@@ -6,7 +6,7 @@
     <title>Registreer</title>
     <link rel="stylesheet" href="/css/app.css">
 </head>
-<body>  
+<body class="auth-page">
     <main>
         <div class="auth-card">
             <div class="auth-header">
