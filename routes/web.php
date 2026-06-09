@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HuisjeController;
+use App\Http\Controllers\InschrijvingController;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Models\User;
@@ -87,11 +88,12 @@ Route::get('/dev/verify-user/{id}', function ($id) {
 // Huisjes Routes
 Route::resource('huisjes', HuisjeController::class)->except(['show']);
 
-// Inschrijving Page
-Route::view('/inschrijving', 'inschrijving')->name('inschrijving');
+// Inschrijving Routes
+Route::get('/inschrijving', [InschrijvingController::class, 'create'])->name('inschrijving.form');
+Route::post('/inschrijving', [InschrijvingController::class, 'store'])->name('inschrijving.submit');
 
-    // Boeking Page
-    Route::view('/boeking', 'boeking.index')->name('boeking');
+// Boeking Page
+Route::view('/boeking', 'boeking.index')->name('boeking');
 
-    // Voorwaarden Page
-    Route::view('/voorwaarden', 'voorwaarden')->name('voorwaarden');
+// Voorwaarden Page
+Route::view('/voorwaarden', 'voorwaarden')->name('voorwaarden');
