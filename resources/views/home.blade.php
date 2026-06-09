@@ -2,6 +2,7 @@
 <html lang="nl">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -105,11 +106,22 @@
 
         </p>
 
-        <a href="{{ route('huisjes.index') }}" class="btn btn-warning btn-lg mt-3">
+        <div class="d-flex justify-content-center gap-2 mt-3">
+            <a href="/huisjes"
+                class="btn btn-warning btn-lg">
 
-            Bekijk Huisjes
+                Bekijk Huisjes
 
-        </a>
+            </a>
+
+            <button id="hoeWerktHetButton"
+                class="btn btn-outline-primary btn-lg"
+                type="button">
+
+                Hoe werkt het?
+
+            </button>
+        </div>
 
     </div>
 
@@ -176,6 +188,32 @@
 
     </div>
 
+    <!-- Hoe werkt het -->
+    <div id="hoe-werkt-het" class="container mt-5" style="display:none;">
+
+        <div class="card border-0 shadow p-5">
+
+            <h2 class="mb-4" style="color:#0d3b66;">
+
+                Hoe werkt het?
+
+            </h2>
+
+            <p>
+                Kies eerst een vakantieperiode en bekijk de beschikbaarheid van de huisjes.
+                Schrijf daarna digitaal in via het formulier met je contactgegevens.
+            </p>
+
+            <p>
+                Het bestuur verwerkt je inschrijving en de toewijzing gebeurt via een
+                eerlijke loting.
+                Als je wordt ingeloot, ontvang je een bevestiging en kun je van je vakantiehuisje genieten.
+            </p>
+
+        </div>
+
+    </div>
+
     <!-- Over Stichting -->
     <div class="container mt-5 mb-5">
 
@@ -220,6 +258,21 @@
 
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var button = document.getElementById('hoeWerktHetButton');
+            var section = document.getElementById('hoe-werkt-het');
+
+            if (button && section) {
+                button.addEventListener('click', function () {
+                    if (section.style.display === 'none' || section.style.display === '') {
+                        section.style.display = 'block';
+                        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>

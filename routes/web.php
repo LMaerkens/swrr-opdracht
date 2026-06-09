@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -10,21 +10,21 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\URL;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-*/
+    /*
+    |--------------------------------------------------------------------------
+    | Web Routes
+    |--------------------------------------------------------------------------
+    */
 
-// Home page
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+    // Home page
+    Route::get('/', function () {
+        return view('home');
+    })->name('home');
 
-// Authentication Routes
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    // Authentication Routes
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [LoginController::class, 'login']);
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Registration Routes
 Route::get('/registreer', [UserController::class, 'index'])->name('registreer.form');
@@ -90,8 +90,8 @@ Route::resource('huisjes', HuisjeController::class)->except(['show']);
 // Inschrijving Page
 Route::view('/inschrijving', 'inschrijving')->name('inschrijving');
 
-// Boeking Page
-Route::view('/boeking', 'boeking.index')->name('boeking');
+    // Boeking Page
+    Route::view('/boeking', 'boeking.index')->name('boeking');
 
-// Voorwaarden Page
-Route::view('/voorwaarden', 'voorwaarden')->name('voorwaarden');
+    // Voorwaarden Page
+    Route::view('/voorwaarden', 'voorwaarden')->name('voorwaarden');
