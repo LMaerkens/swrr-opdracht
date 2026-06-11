@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HuisjeController;
 use App\Http\Controllers\InschrijvingController;
+use App\Http\Controllers\LotingController;
 
     /*
     |--------------------------------------------------------------------------
@@ -40,3 +41,6 @@ Route::post('/inschrijving', [InschrijvingController::class, 'store'])->name('in
 
     // Voorwaarden Page
     Route::view('/voorwaarden', 'voorwaarden')->name('voorwaarden');
+
+    // Lotingblad Page
+    Route::get('/lotingblad', [LotingController::class, 'index'])->name('lotingblad');
