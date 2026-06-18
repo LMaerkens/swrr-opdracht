@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="nl">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +14,7 @@
                 <h1>Registreer</h1>
                 <p>Maak een nieuw account aan</p>
             </div>
-            
+
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <strong>Er zijn fouten in het formulier:</strong>
@@ -30,7 +31,7 @@
                     {{ session('success') }}
                 </div>
             @endif
-            
+
             <form method="POST" action="{{ route('registreer.submit') }}">
                 @csrf
                 <div class="form-group">
@@ -39,7 +40,8 @@
                 </div>
                 <div class="form-group">
                     <label for="email">E-mailadres</label>
-                    <input id="email" name="email" type="email" required value="{{ old('email') }}" placeholder="bijvoorbeeld@domein.nl">
+                    <input id="email" name="email" type="email" required value="{{ old('email') }}"
+                        placeholder="bijvoorbeeld@domein.nl">
                 </div>
                 <div class="form-group">
                     <label for="password">Wachtwoord</label>
@@ -47,7 +49,8 @@
                 </div>
                 <div class="form-group">
                     <label for="password_confirmation">Bevestig Wachtwoord</label>
-                    <input id="password_confirmation" name="password_confirmation" type="password" required placeholder="Herhaal uw wachtwoord">
+                    <input id="password_confirmation" name="password_confirmation" type="password" required
+                        placeholder="Herhaal uw wachtwoord">
                 </div>
                 <button type="submit">Registreer</button>
             </form>
@@ -58,4 +61,5 @@
         </div>
     </main>
 </body>
+
 </html>
