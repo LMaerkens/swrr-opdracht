@@ -28,7 +28,7 @@ Route::get('/register', [UserController::class, 'index'])->name('register');
 Route::post('/register', [UserController::class, 'store']);
 
 // Huisjes Routes
-Route::resource('huisjes', HuisjeController::class)->except(['show']);
+Route::resource('huisjes', HuisjeController::class);
 
 // Boeking Page
 Route::view('/boeking', 'boeking.index')->name('boeking');

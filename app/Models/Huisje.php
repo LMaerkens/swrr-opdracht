@@ -29,6 +29,16 @@ class Huisje extends Model
         'periode',     // Bijv. "per nacht", "per week"
         'beschrijving',// Omschrijving van het huisje
         'aantal',      // Maximaal aantal personen
-        'foto',        // Bestandsnaam van de foto
+        'foto',        // Bestandsnaam van de hoofdfoto
+        'fotos',       // Extra foto's (JSON array)
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'fotos' => 'array',
     ];
 }
