@@ -18,6 +18,9 @@
         @auth
             <a href="{{ route('inschrijving.form') }}">Boeken</a>
             <a href="{{ route('voorwaarden') }}" class="btn btn-accent btn-sm">Voorwaarden</a>
+            @if(auth()->user()->isAdmin())
+                <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary btn-sm">Admin Paneel</a>
+            @endif
             <span class="nav-welcome">
                 Welkom, {{ auth()->user()->name }}
                 @if(auth()->user()->rol === 'admin')

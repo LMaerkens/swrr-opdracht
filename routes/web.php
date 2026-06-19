@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HuisjeController;
 use App\Http\Controllers\InschrijvingController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Models\User;
@@ -97,3 +98,13 @@ Route::view('/boeking', 'boeking.index')->name('boeking');
 
 // Voorwaarden Page
 Route::view('/voorwaarden', 'voorwaarden')->name('voorwaarden');
+
+// Admin Panel Routes (alleen voor admins)
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/',                        [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::get('/inschrijvingen',          [AdminController::class, 'inschrijvingen'])->name('inschrijvingen');
+    Route::get('/inschrijvingen/{id}',     [AdminController::class, 'inschrijvingShow'])->name('inschrijvingen.show');
+    Route::delete('/inschrijvingen/{id}',  [AdminController::class, 'inschrijvingDestroy'])->name('inschrijvingen.destroy');
+    Route::get('/users',                   [AdminController::class, 'users'])->name('users');
+    Route::post('/users/{id}/toggle-admin',[AdminController::class, 'userToggleAdmin'])->name('users.toggleAdmin');
+});
