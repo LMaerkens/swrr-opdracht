@@ -44,7 +44,7 @@
             <ul class="navbar-nav me-auto">
                 <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
                 <li class="nav-item"><a class="nav-link active" href="{{ route('huisjes.index') }}">Huisjes</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('boeking') }}">Boeken</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('inschrijving.form') }}">Boeken</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('voorwaarden') }}">Voorwaarden</a></li>
             </ul>
             <div class="d-flex align-items-center">
