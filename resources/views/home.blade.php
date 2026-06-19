@@ -14,6 +14,7 @@
             padding: 0.75rem 1.25rem;
         }
     </style>
+    <link rel="stylesheet" href="/css/app.css">
 
 
 </head>
