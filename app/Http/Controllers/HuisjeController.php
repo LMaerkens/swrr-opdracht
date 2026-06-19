@@ -23,6 +23,18 @@ class HuisjeController extends Controller
     }
 
     /**
+     * Toon een specifiek huisje met meer details.
+     *
+     * @param  int  $id
+     * @return \Illuminate\View\View
+     */
+    public function show($id)
+    {
+        $huisje = Huisje::findOrFail($id);
+        return view('huisjes.show', compact('huisje'));
+    }
+
+    /**
      * Toon het formulier om een nieuw huisje aan te maken.
      * Alleen beschikbaar voor admins.
      *
@@ -62,13 +74,22 @@ class HuisjeController extends Controller
             'beschrijving'=> 'nullable|string',
             'aantal'      => 'required|integer|min:1',
             'foto'        => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'fotos.*'     => 'image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
 
-        // Verwerk de foto als die is geüpload
+        // Verwerk de hoofdfoto
         if ($request->hasFile('foto')) {
-            // Sla op in storage/app/public/huisjes
             $validated['foto'] = $request->file('foto')->store('huisjes', 'public');
         }
+
+        // Verwerk extra foto's
+        $fotos = [];
+        if ($request->hasFile('fotos')) {
+            foreach ($request->file('fotos') as $file) {
+                $fotos[] = $file->store('huisjes', 'public');
+            }
+        }
+        $validated['fotos'] = empty($fotos) ? null : $fotos;
 
         // Maak het huisje aan in de database
         Huisje::create($validated);
@@ -123,15 +144,24 @@ class HuisjeController extends Controller
             'beschrijving'=> 'nullable|string',
             'aantal'      => 'required|integer|min:1',
             'foto'        => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'fotos.*'     => 'image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
 
-        // Verwerk nieuwe foto als die is geüpload
+        // Verwerk nieuwe hoofdfoto
         if ($request->hasFile('foto')) {
-            // Verwijder de oude foto als die bestaat
             if ($huisje->foto) {
                 Storage::disk('public')->delete($huisje->foto);
             }
             $validated['foto'] = $request->file('foto')->store('huisjes', 'public');
+        }
+
+        // Verwerk nieuwe extra foto's (toevoegen aan bestaande)
+        $fotos = is_array($huisje->fotos) ? $huisje->fotos : [];
+        if ($request->hasFile('fotos')) {
+            foreach ($request->file('fotos') as $file) {
+                $fotos[] = $file->store('huisjes', 'public');
+            }
+            $validated['fotos'] = $fotos;
         }
 
         // Werk het huisje bij
@@ -160,6 +190,11 @@ class HuisjeController extends Controller
         // Verwijder bijbehorende foto uit storage
         if ($huisje->foto) {
             Storage::disk('public')->delete($huisje->foto);
+        }
+        if (is_array($huisje->fotos)) {
+            foreach ($huisje->fotos as $foto) {
+                Storage::disk('public')->delete($foto);
+            }
         }
 
         // Verwijder het huisje uit de database

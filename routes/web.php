@@ -87,7 +87,7 @@ Route::get('/dev/verify-user/{id}', function ($id) {
 })->name('dev.verify-user');
 
 // Huisjes Routes
-Route::resource('huisjes', HuisjeController::class)->except(['show']);
+Route::resource('huisjes', HuisjeController::class);
 
 // Inschrijving Routes
 Route::get('/inschrijving', [InschrijvingController::class, 'create'])->name('inschrijving.form');
