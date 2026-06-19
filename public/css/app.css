@@ -238,7 +238,6 @@ main.auth-main {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    padding: 1.5rem;
 }
 
 .auth-card {
@@ -977,9 +976,6 @@ input[type="radio"] {
     font-weight: 600;
 }
 
-body.page-inschrijving {
-    padding: 1.25rem;
-}
 
 .form-card-footer {
     padding: 0 1.75rem 1.75rem;
