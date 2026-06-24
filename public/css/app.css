@@ -426,9 +426,7 @@ button[type="submit"]:hover,
 }
 
 /* ===== Forms ===== */
-form {
-    width: 100%;
-}
+
 
 .form-group {
     margin-bottom: 1.25rem;
