@@ -60,7 +60,7 @@ class UserController extends Controller
         ]);
 
         // Send email verification (without logging in yet)
-        event(new Registered($user));
+        // event(new Registered($user));
 
         return redirect('/email/verify-sent')->with('success', 'Registratie succesvol! Controleer je e-mail om je account te verifiëren.');
     }
