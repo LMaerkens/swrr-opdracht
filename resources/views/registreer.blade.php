@@ -43,6 +43,7 @@
                     <input id="email" name="email" type="email" required value="{{ old('email') }}"
                         placeholder="bijvoorbeeld@domein.nl">
                 </div>
+
                 <div class="form-group">
                     <label for="password">Wachtwoord</label>
                     <input id="password" name="password" type="password" required placeholder="Minimaal 8 tekens">
